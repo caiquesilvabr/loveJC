@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Save the Date - Jéssica & Caique</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: Inter, sans-serif; color: #fff; overflow: hidden; }
@@ -26,22 +26,61 @@
       padding: 20px;
       z-index: 2;
     }
+
+    /* Save the Date centralizado no topo */
+    .save-the-date {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(48px, 10vw, 120px);
+      font-weight: 400;
+      background: linear-gradient(
+        90deg,
+        #fff7d6,
+        #f3d98b,
+        #b8860b,
+        #f3d98b,
+        #fff7d6
+      );
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 4s linear infinite;
+      z-index: 3;
+      text-align: center;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    }
+
+    /* Nomes estilizados */
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 6vw, 64px);
-      font-weight: 600;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(40px, 8vw, 90px);
+      font-weight: 400;
       margin-bottom: 20px;
-      background: linear-gradient(90deg, #fff7d6, #f3d98b, #b8860b, #f3d98b, #fff7d6);
+      background: linear-gradient(
+        90deg,
+        #fff7d6,
+        #f3d98b,
+        #b8860b,
+        #f3d98b,
+        #fff7d6
+      );
       background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: shine 6s linear infinite;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+      text-align: center;
     }
+
     @keyframes shine {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
     .date {
       font-size: clamp(18px, 3vw, 26px);
       margin-bottom: 30px;
@@ -50,12 +89,14 @@
       border-radius: 30px;
       display: inline-block;
     }
+
     .countdown {
       display: flex;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .time-box {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -63,16 +104,32 @@
       padding: 15px 20px;
       min-width: 70px;
     }
+
     .time-box h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Great Vibes', cursive;
       font-size: clamp(20px, 4vw, 36px);
       margin-bottom: 5px;
+      background: linear-gradient(
+        90deg,
+        #fff7d6,
+        #f3d98b,
+        #b8860b,
+        #f3d98b,
+        #fff7d6
+      );
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 6s linear infinite;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
+
     .time-box span {
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
+
     @media(max-width: 600px){
       .countdown { gap: 6px; }
       .time-box { padding: 10px; }
@@ -81,6 +138,10 @@
 </head>
 <body>
   <div class="overlay"></div>
+
+  <!-- Save the Date centralizado no topo -->
+  <div class="save-the-date">Save the Date</div>
+
   <div class="container">
     <h1>Jéssica & Caique</h1>
     <div class="date">13 de Setembro de 2025 • 19h</div>
