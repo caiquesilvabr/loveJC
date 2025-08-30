@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save the Date - Jéssica & Caique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: Inter, sans-serif; color: #fff; overflow: hidden; }
+    body {
+      background: url(fundo.jpg) center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(2px);
+    }
+    .container {
+      position: relative;
+      text-align: center;
+      padding: 20px;
+      z-index: 2;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 600;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #fff7d6, #f3d98b, #b8860b, #f3d98b, #fff7d6);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 6s linear infinite;
+    }
+    @keyframes shine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .date {
+      font-size: clamp(18px, 3vw, 26px);
+      margin-bottom: 30px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 20px;
+      border-radius: 30px;
+      display: inline-block;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .time-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 15px 20px;
+      min-width: 70px;
+    }
+    .time-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 4vw, 36px);
+      margin-bottom: 5px;
+    }
+    .time-box span {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    @media(max-width: 600px){
+      .countdown { gap: 6px; }
+      .time-box { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>Jéssica & Caique</h1>
+    <div class="date">13 de Setembro de 2025 • 19h</div>
+    <div class="countdown">
+      <div class="time-box"><h2 id="days">--</h2><span>Dias</span></div>
+      <div class="time-box"><h2 id="hours">--</h2><span>Horas</span></div>
+      <div class="time-box"><h2 id="mins">--</h2><span>Min</span></div>
+      <div class="time-box"><h2 id="secs">--</h2><span>Seg</span></div>
+    </div>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-09-13T19:00:00-03:00").getTime();
+    const el = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      mins: document.getElementById('mins'),
+      secs: document.getElementById('secs')
+    };
+    function updateCountdown() {
+      const now = Date.now();
+      let diff = targetDate - now;
+      if (diff < 0) diff = 0;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+      el.days.textContent = days;
+      el.hours.textContent = hours.toString().padStart(2,'0');
+      el.mins.textContent = mins.toString().padStart(2,'0');
+      el.secs.textContent = secs.toString().padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
